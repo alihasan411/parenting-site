@@ -10,16 +10,27 @@
 /* RESET */
 *{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI;}
 
-body{
-  background:#0f172a;
-  color:#fff;
-  transition:0.3s;
+:root{
+  --bg:#0f172a;
+  --text:#fff;
+  --card:#1e293b;
+  --primary:#22c55e;
+  --hero1:#14532d;
+  --hero2:#22c55e;
 }
 
 /* LIGHT MODE */
 body.light{
-  background:#f5f7fa;
-  color:#111;
+  --bg:#f5f7fa;
+  --text:#111;
+  --card:#fff;
+}
+
+/* BODY */
+body{
+  background:var(--bg);
+  color:var(--text);
+  transition:0.3s;
 }
 
 /* NAVBAR */
@@ -28,7 +39,8 @@ header{
   justify-content:space-between;
   align-items:center;
   padding:15px 20px;
-  background:#020617;
+  background:var(--card);
+  flex-wrap:wrap;
 }
 
 nav{
@@ -38,53 +50,45 @@ nav{
 
 nav a{
   text-decoration:none;
-  color:#fff;
-}
-
-body.light nav a{
-  color:#000;
+  color:var(--text);
+  font-weight:bold;
 }
 
 .toggle{
   cursor:pointer;
+  font-size:18px;
 }
 
 /* HERO */
 .hero{
-  height:90vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
   text-align:center;
-  background:linear-gradient(135deg,#020617,#111827);
-}
-
-body.light .hero{
-  background:linear-gradient(135deg,#e2e8f0,#cbd5e1);
+  padding:80px 20px;
+  background:linear-gradient(135deg,var(--hero1),var(--hero2));
 }
 
 .hero h1{
-  animation:move 2s infinite alternate;
+  font-size:28px;
+  transition:0.5s;
 }
 
-@keyframes move{
-  from{transform:translateY(-20px);}
-  to{transform:translateY(20px);}
+.hero p{
+  opacity:0.8;
+  margin-top:10px;
+  transition:0.5s;
 }
 
 .hero button{
   margin-top:20px;
-  padding:10px 20px;
+  padding:12px 25px;
   border:none;
-  background:#22c55e;
-  color:#fff;
-  border-radius:6px;
+  border-radius:8px;
+  background:white;
+  color:#14532d;
   cursor:pointer;
 }
 
 /* CARDS */
-.section{padding:30px;}
+.section{padding:30px 20px;}
 
 .cards{
   display:grid;
@@ -93,14 +97,10 @@ body.light .hero{
 }
 
 .card{
-  background:#1e293b;
-  border-radius:10px;
+  background:var(--card);
+  border-radius:12px;
   overflow:hidden;
   transition:0.3s;
-}
-
-body.light .card{
-  background:#fff;
 }
 
 .card:hover{
@@ -113,24 +113,22 @@ body.light .card{
   object-fit:cover;
 }
 
-.card-content{
-  padding:15px;
-}
+.card-content{padding:15px;}
 
 .card button{
   margin-top:10px;
   padding:8px 15px;
   border:none;
-  background:#22c55e;
+  background:var(--primary);
   color:#fff;
-  border-radius:5px;
+  border-radius:6px;
   cursor:pointer;
 }
 
 /* CONTACT */
 .contact{
-  padding:30px;
   text-align:center;
+  padding:30px;
 }
 
 /* MODAL */
@@ -149,25 +147,18 @@ body.light .card{
   color:#000;
   padding:20px;
   border-radius:10px;
+  width:90%;
   max-width:300px;
 }
 
-.hero h1, .hero p{
-  transition: all 0.5s ease;
-  opacity: 1;
+/* MOBILE */
+@media(max-width:600px){
+  nav{
+    width:100%;
+    justify-content:center;
+    margin-top:10px;
+  }
 }
-
-.fade-out{
-  opacity: 0;
-  transform: translateY(-10px);
-}
-
-.fade-in{
-  opacity: 1;
-  transform: translateY(10px);
-}
-
-
 
 </style>
 </head>
@@ -189,66 +180,64 @@ body.light .card{
 <!-- HERO -->
 <section class="hero">
   <h1 id="heroText">Raise Strong Kids</h1>
-<p id="heroSub">in Digital World</p>
+  <p id="heroSub">in Digital World</p>
   <button onclick="scrollToProjects()">Explore</button>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects" class="section">
-  <h2 style="text-align:center">Projects</h2>
+<h2 style="text-align:center;margin-bottom:20px;">Parenting Tips</h2>
 
-  <div class="cards">
+<div class="cards">
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1588072432836-e10032774350">
-      <div class="card-content">
-        <h3>Screen Time</h3>
-        <button onclick="openModal('Limit mobile usage and encourage outdoor activities')">View</button>
-      </div>
-    </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1588072432836-e10032774350">
+<div class="card-content">
+<h3>Screen Time</h3>
+<button onclick="openModal('Limit screen time and encourage outdoor play')">View</button>
+</div>
+</div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b">
-      <div class="card-content">
-        <h3>Confidence</h3>
-        <button onclick="openModal('Help kids build confidence and speak freely')">View</button>
-      </div>
-    </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b">
+<div class="card-content">
+<h3>Confidence</h3>
+<button onclick="openModal('Build confidence by encouraging kids to speak')">View</button>
+</div>
+</div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7">
-      <div class="card-content">
-        <h3>Healthy Life</h3>
-       
- <button onclick="openModal('Outdoor games and healthy lifestyle')">
-View</button>
-      </div>
-    </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1509062522246-3755977927d7">
+<div class="card-content">
+<h3>Healthy Life</h3>
+<button onclick="openModal('Outdoor games and healthy habits')">View</button>
+</div>
+</div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1584697964358-3e14ca57658b">
-      <div class="card-content">
-        <h3>Learning</h3>
-        <button onclick="openModal('Use apps wisely and study regularly')">View</button>
-      </div>
-    </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1584697964358-3e14ca57658b">
+<div class="card-content">
+<h3>Learning</h3>
+<button onclick="openModal('Use educational apps wisely')">View</button>
+</div>
+</div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0">
-      <div class="card-content">
-        <h3>Discipline</h3>
-        <button onclick="openModal('Teach routine and good habits')">View</button>
-      </div>
-    </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1513258496099-48168024aec0">
+<div class="card-content">
+<h3>Discipline</h3>
+<button onclick="openModal('Teach routine and good habits')">View</button>
+</div>
+</div>
 
-  </div>
+</div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="contact">
-  <h2>Contact</h2>
-  <p>📞 0300-1234567</p>
-  <p>📧 alihassanayesha752@gmail.com</p>
+<h2>Contact</h2>
+<p>📞 0300-1234567</p>
+<p>📧 ali@email.com</p>
 </section>
 
 <!-- MODAL -->
@@ -263,7 +252,7 @@ View</button>
 
 /* DARK MODE */
 function toggleMode(){
-  document.body.classList.toggle("dark");
+  document.body.classList.toggle("light");
 }
 
 /* SCROLL */
@@ -275,15 +264,15 @@ function scrollToProjects(){
 
 /* MODAL */
 function openModal(text){
-  document.getElementById("modal").style.display = "flex";
-  document.getElementById("modalText").innerHTML = text;
+  document.getElementById("modal").style.display="flex";
+  document.getElementById("modalText").innerHTML=text;
 }
 
 function closeModal(){
-  document.getElementById("modal").style.display = "none";
+  document.getElementById("modal").style.display="none";
 }
 
-/* HERO TEXT ANIMATION */
+/* HERO TEXT FLOW */
 const texts = [
   "Raise Strong Kids",
   "Guide Kids Smartly",
@@ -292,33 +281,19 @@ const texts = [
 
 const subTexts = [
   "in Digital World",
-  "in Modern Era",
-  "with Smart Parenting"
+  "Modern Parenting Tips",
+  "Smart Parenting Guide"
 ];
 
 let i = 0;
 
 setInterval(()=>{
-  const h1 = document.getElementById("heroText");
-  const p = document.getElementById("heroSub");
-
-  h1.style.opacity = 0;
-  p.style.opacity = 0;
-
-  setTimeout(()=>{
-    i = (i + 1) % texts.length;
-
-    h1.innerText = texts[i];
-    p.innerText = subTexts[i];
-
-    h1.style.opacity = 1;
-    p.style.opacity = 1;
-  },300);
-
+  i = (i+1)%texts.length;
+  document.getElementById("heroText").innerText = texts[i];
+  document.getElementById("heroSub").innerText = subTexts[i];
 },2500);
 
 </script>
-
 
 </body>
 </html>
