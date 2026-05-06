@@ -8,28 +8,15 @@
 <style>
 
 /* RESET */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
 
-/* COLORS */
 :root{
-  --bg:#f5f7fa;
-  --text:#333;
-  --card:#ffffff;
-  --primary:#4CAF50;
-}
-
-.dark{
-  --bg:#121212;
+  --bg:#0f172a;
   --text:#fff;
-  --card:#1e1e1e;
+  --card:#1e293b;
+  --primary:#22c55e;
 }
 
-/* BODY */
 body{
   background:var(--bg);
   color:var(--text);
@@ -41,57 +28,51 @@ header{
   justify-content:space-between;
   align-items:center;
   padding:15px 20px;
-  background:var(--card);
+  background:#020617;
   position:sticky;
   top:0;
-  z-index:100;
 }
 
 nav a{
   margin:0 10px;
+  color:#fff;
   text-decoration:none;
-  color:var(--text);
-  font-weight:bold;
 }
 
-.toggle{
-  cursor:pointer;
-  font-size:20px;
+nav a:hover{
+  color:var(--primary);
 }
 
 /* HERO */
 .hero{
   text-align:center;
-  padding:60px 20px;
-  background:linear-gradient(135deg,#4CAF50,#81C784);
-  color:white;
+  padding:70px 20px;
+  background:linear-gradient(135deg,#22c55e,#4ade80);
 }
 
 .hero h1{
-  font-size:32px;
-  animation:slide 2s infinite alternate;
+  font-size:28px;
 }
 
-@keyframes slide{
-  from{transform:translateY(-10px);}
-  to{transform:translateY(10px);}
+.hero span{
+  display:block;
+  margin-top:10px;
+  font-size:18px;
+  opacity:0.8;
 }
 
 .hero button{
   margin-top:20px;
-  padding:12px 25px;
+  padding:10px 20px;
   border:none;
   border-radius:8px;
-  background:white;
-  color:#4CAF50;
-  font-weight:bold;
+  background:#fff;
+  color:#000;
   cursor:pointer;
 }
 
 /* CARDS */
-.section{
-  padding:30px 20px;
-}
+.section{padding:30px 20px;}
 
 .cards{
   display:grid;
@@ -103,7 +84,6 @@ nav a{
   background:var(--card);
   border-radius:15px;
   overflow:hidden;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
   transition:0.3s;
 }
 
@@ -113,18 +93,18 @@ nav a{
 
 .card img{
   width:100%;
+  height:180px;
+  object-fit:cover;
 }
 
-.card-content{
-  padding:15px;
-}
+.card-content{padding:15px;}
 
 .card button{
   margin-top:10px;
   padding:8px 15px;
   border:none;
   background:var(--primary);
-  color:white;
+  color:#fff;
   border-radius:5px;
   cursor:pointer;
 }
@@ -135,156 +115,24 @@ nav a{
   text-align:center;
 }
 
-.contact input, .contact textarea{
-  width:100%;
-  padding:10px;
-  margin:10px 0;
-  border-radius:5px;
-  border:1px solid #ccc;
-}
-
-.contact button{
-  background:var(--primary);
-  color:white;
-  padding:10px 20px;
-  border:none;
-  border-radius:5px;
-}
-
-/* Overlay */
+/* MODAL */
 .modal{
   display:none;
   position:fixed;
-  top:0;
-  left:0;
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,0.7);
   justify-content:center;
   align-items:center;
-  z-index:1000;
-  animation:fadeIn 0.3s ease;
 }
 
-/* Box */
 .modal-content{
-  background:#ffffff;
-  padding:25px;
-  border-radius:15px;
-  width:90%;
-  max-width:320px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.3);
-  animation:slideUp 0.4s ease;
-  text-align:left;
-}
-
-/* Heading */
-.modal-content h3{
-  margin-bottom:10px;
-  font-size:20px;
-}
-
-/* Text */
-.modal-content p{
-  font-size:14px;
-  line-height:1.6;
-  color:#555;
-}
-
-/* Close Button */
-.modal-content button{
-  margin-top:15px;
-  padding:8px 15px;
-  border:none;
-  background:#4CAF50;
-  color:#fff;
-  border-radius:6px;
-  cursor:pointer;
-}
-
-/* Animations */
-@keyframes fadeIn{
-  from{opacity:0;}
-  to{opacity:1;}
-}
-
-@keyframes slideUp{
-  from{transform:translateY(50px); opacity:0;}
-  to{transform:translateY(0); opacity:1;}
-}
-
-
-
-/* Cards Container */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-  padding:20px;
-}
-
-/* Card */
-.card{
   background:#fff;
-  border-radius:15px;
-  overflow:hidden;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
-  transition:0.3s;
-  position:relative;
+  color:#000;
+  padding:20px;
+  border-radius:10px;
+  max-width:300px;
 }
-
-/* Hover Lift */
-.card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 15px 30px rgba(0,0,0,0.2);
-}
-
-/* Image */
-.card img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  transition:0.4s;
-}
-
-/* Image Zoom */
-.card:hover img{
-  transform:scale(1.1);
-}
-
-/* Content */
-.card-content{
-  padding:15px;
-}
-
-.card-content h3{
-  margin-bottom:5px;
-}
-
-.card-content p{
-  font-size:14px;
-  color:#666;
-}
-
-/* Button */
-.card-content button{
-  margin-top:10px;
-  padding:8px 15px;
-  border:none;
-  background:#4CAF50;
-  color:#fff;
-  border-radius:6px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-/* Button Hover Glow */
-.card-content button:hover{
-  background:#45a049;
-  box-shadow:0 0 10px rgba(76,175,80,0.6);
-}
-
-
 
 </style>
 </head>
@@ -298,12 +146,12 @@ nav a{
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </nav>
-  <div class="toggle" onclick="toggleMode()">🌙</div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Raise Strong Kids in Digital World</h1>
+  <h1 id="heroText">Raise Strong Kids</h1>
+  <span id="heroSub">in Digital World</span>
   <button onclick="scrollToProjects()">Explore</button>
 </section>
 
@@ -313,115 +161,65 @@ nav a{
 
   <div class="cards">
 
-  <!-- CARD 1 -->
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350" alt="">
-    <div class="card-content">
-      <h3>Screen Time</h3>
-      <p>Control mobile usage</p>
-      <button onclick="openModal(`
-<b>Screen Time Control</b><br><br>
-• Set daily screen time limits (1–2 hours)<br>
-• Avoid mobile during meals & bedtime<br>
-• Be a role model as a parent<br>
-• Encourage outdoor activities
-`)">View</button>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1588072432836-e10032774350">
+      <div class="card-content">
+        <h3>Screen Time</h3>
+        <button onclick="openModal('Limit screen time and encourage outdoor activities')">View</button>
+      </div>
     </div>
-  </div>
 
-  <!-- CARD 2 -->
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b" alt="">
-    <div class="card-content">
-      <h3>Confidence</h3>
-      <p>Build self belief</p>
-      <button onclick="openModal(`
-<b>Build Confidence</b><br><br>
-• Let kids express themselves<br>
-• Guide instead of scolding<br>
-• Celebrate small achievements<br>
-• Allow decision making
-`)">View</button>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b">
+      <div class="card-content">
+        <h3>Confidence</h3>
+        <button onclick="openModal('Help kids speak and build confidence')">View</button>
+      </div>
     </div>
-  </div>
 
-  <!-- CARD 3 -->
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7" alt="">
-    <div class="card-content">
-      <h3>Healthy Life</h3>
-      <p>Outdoor activities</p>
-      <button onclick="openModal(`
-<b>Healthy Activities</b><br><br>
-• Encourage daily outdoor play<br>
-• Build reading habits<br>
-• Reduce junk food intake<br>
-• Promote physical activities
-`)">View</button>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7">
+      <div class="card-content">
+        <h3>Healthy Life</h3>
+        <button onclick="openModal('Outdoor play and healthy food habits')">View</button>
+      </div>
     </div>
-  </div>
 
-  <!-- CARD 4 -->
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1584697964358-3e14ca57658b" alt="">
-    <div class="card-content">
-      <h3>Smart Learning</h3>
-      <p>Learn effectively</p>
-      <button onclick="openModal(`
-<b>Smart Learning</b><br><br>
-• Use educational apps<br>
-• Monitor YouTube usage<br>
-• Create daily study routine<br>
-• Focus on practical learning
-`)">View</button>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1584697964358-3e14ca57658b">
+      <div class="card-content">
+        <h3>Smart Learning</h3>
+        <button onclick="openModal('Use educational apps wisely')">View</button>
+      </div>
     </div>
-  </div>
 
-  <!-- CARD 5 -->
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0" alt="">
-    <div class="card-content">
-      <h3>Discipline</h3>
-      <p>Build good habits</p>
-      <button onclick="openModal(`
-<b>Discipline</b><br><br>
-• Maintain a daily routine<br>
-• Set clear rules<br>
-• Teach respect and manners<br>
-• Be consistent
-`)">View</button>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0">
+      <div class="card-content">
+        <h3>Discipline</h3>
+        <button onclick="openModal('Teach routine and discipline')">View</button>
+      </div>
     </div>
-  </div>
 
-</div>
+  </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="contact">
-  <h2>Contact Me</h2>
+  <h2>Contact</h2>
   <p>📞 0300-1234567</p>
   <p>📧 ali@email.com</p>
-
-  <input type="text" placeholder="Your Name">
-  <input type="email" placeholder="Your Email">
-  <textarea placeholder="Message"></textarea>
-  <button>Send</button>
 </section>
 
-
+<!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-content">
-    <h3>Details</h3>
     <p id="modalText"></p>
     <button onclick="closeModal()">Close</button>
   </div>
 </div>
-<script>
 
-/* DARK MODE */
-function toggleMode(){
-  document.body.classList.toggle("dark");
-}
+<script>
 
 /* SCROLL */
 function scrollToProjects(){
@@ -429,20 +227,27 @@ function scrollToProjects(){
 }
 
 /* MODAL */
-<script>
 function openModal(text){
   document.getElementById("modal").style.display="flex";
-  document.getElementById("modalText").innerHTML = text;
+  document.getElementById("modalText").innerHTML=text;
 }
 
 function closeModal(){
   document.getElementById("modal").style.display="none";
 }
-</script>
 
-function closeModal(){
-  document.getElementById("modal").style.display="none";
-}
+/* HERO TEXT ANIMATION */
+const texts = [
+  "Raise Strong Kids",
+  "Guide Kids in Digital Age"
+];
+
+let i=0;
+
+setInterval(()=>{
+  i=(i+1)%texts.length;
+  document.getElementById("heroText").innerText=texts[i];
+},2000);
 
 </script>
 
