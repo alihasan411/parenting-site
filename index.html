@@ -323,6 +323,12 @@ function closeModal(){
   document.getElementById("modal").style.display="none";
 }
 
+document.querySelectorAll(".viewBtn").forEach(btn=>{
+  btn.addEventListener("click", function(){
+    openModal(this.getAttribute("data-text"));
+  });
+});
+
 /* BUTTON FIX (IMPORTANT) */
 document.querySelectorAll(".viewBtn").forEach(btn=>{
   btn.addEventListener("click", function(){
