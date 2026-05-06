@@ -259,6 +259,28 @@ function closeModal(){
   document.getElementById("modal").style.display="none";
 }
 
+
+
+const texts = [
+  "Raise Strong Kids",
+  "Guide Kids in Digital Age"
+];
+
+const subTexts = [
+  "in Digital World",
+  "Smart Parenting Tips"
+];
+
+let i = 0;
+
+setInterval(()=>{
+  i = (i + 1) % texts.length;
+
+  document.getElementById("heroText").innerText = texts[i];
+  document.getElementById("heroSub").innerText = subTexts[i];
+
+}, 2000);
+
 </script>
 
 </body>
