@@ -329,13 +329,7 @@ window.onload = function(){
 
   /* BUTTON FIX (ONLY ONCE) */
   setTimeout(()=>{
-  document.querySelectorAll(".viewBtn").forEach(btn=>{
-    btn.addEventListener("click", function(){
-      openModal(this.getAttribute("data-text"));
-    });
-  });
-}, 500);
-
+  
   /* HERO TEXT */
   const texts = [
     "Raise Strong Kids",
