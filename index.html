@@ -272,6 +272,14 @@ function closeModal(){
   document.getElementById("modal").style.display="none";
 }
 
+/* BUTTON FIX (IMPORTANT) */
+document.querySelectorAll(".viewBtn").forEach(btn=>{
+  btn.addEventListener("click", function(){
+    const text = this.getAttribute("data-text");
+    openModal(text);
+  });
+});
+
 /* HERO TEXT FLOW */
 const texts = [
   "Raise Strong Kids",
