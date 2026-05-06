@@ -267,23 +267,40 @@ function closeModal(){
 /* HERO TEXT SWITCH */
 const texts = [
   "Raise Strong Kids",
-  "Guide Kids in Digital Age"
+  "Guide Kids Smartly",
+  "Build Strong Future"
 ];
 
 const subTexts = [
   "in Digital World",
-  "Smart Parenting Tips"
+  "in Modern Era",
+  "with Smart Parenting"
 ];
 
 let i = 0;
 
 setInterval(()=>{
-  i = (i + 1) % texts.length;
+  const h1 = document.getElementById("heroText");
+  const p = document.getElementById("heroSub");
 
-  document.getElementById("heroText").innerText = texts[i];
-  document.getElementById("heroSub").innerText = subTexts[i];
+  h1.classList.add("fade-out");
+  p.classList.add("fade-out");
 
-},2000);
+  setTimeout(()=>{
+    i = (i + 1) % texts.length;
+
+    h1.innerText = texts[i];
+    p.innerText = subTexts[i];
+
+    h1.classList.remove("fade-out");
+    p.classList.remove("fade-out");
+
+    h1.classList.add("fade-in");
+    p.classList.add("fade-in");
+  },300);
+
+},2500);
+
 
 </script>
 
