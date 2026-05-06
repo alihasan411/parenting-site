@@ -8,18 +8,18 @@
 <style>
 
 /* RESET */
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
-
-:root{
-  --bg:#0f172a;
-  --text:#fff;
-  --card:#1e293b;
-  --primary:#22c55e;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI;}
 
 body{
-  background:var(--bg);
-  color:var(--text);
+  background:#0f172a;
+  color:#fff;
+  transition:0.3s;
+}
+
+/* LIGHT MODE */
+body.light{
+  background:#f5f7fa;
+  color:#111;
 }
 
 /* NAVBAR */
@@ -29,50 +29,62 @@ header{
   align-items:center;
   padding:15px 20px;
   background:#020617;
-  position:sticky;
-  top:0;
+}
+
+nav{
+  display:flex;
+  gap:15px;
 }
 
 nav a{
-  margin:0 10px;
-  color:#fff;
   text-decoration:none;
+  color:#fff;
 }
 
-nav a:hover{
-  color:var(--primary);
+body.light nav a{
+  color:#000;
+}
+
+.toggle{
+  cursor:pointer;
 }
 
 /* HERO */
 .hero{
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
-  padding:70px 20px;
-  background:linear-gradient(135deg,#22c55e,#4ade80);
+  background:linear-gradient(135deg,#020617,#111827);
+}
+
+body.light .hero{
+  background:linear-gradient(135deg,#e2e8f0,#cbd5e1);
 }
 
 .hero h1{
-  font-size:28px;
+  animation:move 2s infinite alternate;
 }
 
-.hero span{
-  display:block;
-  margin-top:10px;
-  font-size:18px;
-  opacity:0.8;
+@keyframes move{
+  from{transform:translateY(-20px);}
+  to{transform:translateY(20px);}
 }
 
 .hero button{
   margin-top:20px;
   padding:10px 20px;
   border:none;
-  border-radius:8px;
-  background:#fff;
-  color:#000;
+  background:#22c55e;
+  color:#fff;
+  border-radius:6px;
   cursor:pointer;
 }
 
 /* CARDS */
-.section{padding:30px 20px;}
+.section{padding:30px;}
 
 .cards{
   display:grid;
@@ -81,10 +93,14 @@ nav a:hover{
 }
 
 .card{
-  background:var(--card);
-  border-radius:15px;
+  background:#1e293b;
+  border-radius:10px;
   overflow:hidden;
   transition:0.3s;
+}
+
+body.light .card{
+  background:#fff;
 }
 
 .card:hover{
@@ -97,13 +113,15 @@ nav a:hover{
   object-fit:cover;
 }
 
-.card-content{padding:15px;}
+.card-content{
+  padding:15px;
+}
 
 .card button{
   margin-top:10px;
   padding:8px 15px;
   border:none;
-  background:var(--primary);
+  background:#22c55e;
   color:#fff;
   border-radius:5px;
   cursor:pointer;
@@ -141,23 +159,26 @@ nav a:hover{
 
 <header>
   <h3>Smart Parenting</h3>
+
   <nav>
     <a href="#">Home</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </nav>
+
+  <div class="toggle" onclick="toggleMode()">🌙</div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <h1 id="heroText">Raise Strong Kids</h1>
-  <span id="heroSub">in Digital World</span>
+  <h1>Raise Strong Kids</h1>
+  <p>Guide kids in digital world</p>
   <button onclick="scrollToProjects()">Explore</button>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects" class="section">
-  <h2 style="text-align:center;margin-bottom:20px;">Parenting Tips</h2>
+  <h2 style="text-align:center">Projects</h2>
 
   <div class="cards">
 
@@ -165,7 +186,7 @@ nav a:hover{
       <img src="https://images.unsplash.com/photo-1588072432836-e10032774350">
       <div class="card-content">
         <h3>Screen Time</h3>
-        <button onclick="openModal('Limit screen time and encourage outdoor activities')">View</button>
+        <button onclick="openModal('Limit mobile usage and encourage outdoor activities')">View</button>
       </div>
     </div>
 
@@ -173,7 +194,7 @@ nav a:hover{
       <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b">
       <div class="card-content">
         <h3>Confidence</h3>
-        <button onclick="openModal('Help kids speak and build confidence')">View</button>
+        <button onclick="openModal('Help kids build confidence and speak freely')">View</button>
       </div>
     </div>
 
@@ -181,15 +202,15 @@ nav a:hover{
       <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7">
       <div class="card-content">
         <h3>Healthy Life</h3>
-        <button onclick="openModal('Outdoor play and healthy food habits')">View</button>
+        <button onclick="openModal('Outdoor games and healthy lifestyle')">View</button>
       </div>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1584697964358-3e14ca57658b">
       <div class="card-content">
-        <h3>Smart Learning</h3>
-        <button onclick="openModal('Use educational apps wisely')">View</button>
+        <h3>Learning</h3>
+        <button onclick="openModal('Use apps wisely and study regularly')">View</button>
       </div>
     </div>
 
@@ -197,7 +218,7 @@ nav a:hover{
       <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0">
       <div class="card-content">
         <h3>Discipline</h3>
-        <button onclick="openModal('Teach routine and discipline')">View</button>
+        <button onclick="openModal('Teach routine and good habits')">View</button>
       </div>
     </div>
 
@@ -221,12 +242,14 @@ nav a:hover{
 
 <script>
 
-/* SCROLL */
+function toggleMode(){
+  document.body.classList.toggle("light");
+}
+
 function scrollToProjects(){
   document.getElementById("projects").scrollIntoView({behavior:"smooth"});
 }
 
-/* MODAL */
 function openModal(text){
   document.getElementById("modal").style.display="flex";
   document.getElementById("modalText").innerHTML=text;
@@ -235,19 +258,6 @@ function openModal(text){
 function closeModal(){
   document.getElementById("modal").style.display="none";
 }
-
-/* HERO TEXT ANIMATION */
-const texts = [
-  "Raise Strong Kids",
-  "Guide Kids in Digital Age"
-];
-
-let i=0;
-
-setInterval(()=>{
-  i=(i+1)%texts.length;
-  document.getElementById("heroText").innerText=texts[i];
-},2000);
 
 </script>
 
