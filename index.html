@@ -242,25 +242,29 @@ body.light .card{
 
 <script>
 
+/* DARK MODE */
 function toggleMode(){
   document.body.classList.toggle("light");
 }
 
+/* SCROLL */
 function scrollToProjects(){
-  document.getElementById("projects").scrollIntoView({behavior:"smooth"});
+  document.getElementById("projects").scrollIntoView({
+    behavior:"smooth"
+  });
 }
 
+/* MODAL */
 function openModal(text){
   document.getElementById("modal").style.display="flex";
-  document.getElementById("modalText").innerHTML=text;
+  document.getElementById("modalText").innerHTML = text;
 }
 
 function closeModal(){
   document.getElementById("modal").style.display="none";
 }
 
-
-
+/* HERO TEXT SWITCH */
 const texts = [
   "Raise Strong Kids",
   "Guide Kids in Digital Age"
@@ -279,7 +283,7 @@ setInterval(()=>{
   document.getElementById("heroText").innerText = texts[i];
   document.getElementById("heroSub").innerText = subTexts[i];
 
-}, 2000);
+},2000);
 
 </script>
 
