@@ -429,10 +429,16 @@ function scrollToProjects(){
 }
 
 /* MODAL */
+<script>
 function openModal(text){
   document.getElementById("modal").style.display="flex";
   document.getElementById("modalText").innerHTML = text;
 }
+
+function closeModal(){
+  document.getElementById("modal").style.display="none";
+}
+</script>
 
 function closeModal(){
   document.getElementById("modal").style.display="none";
