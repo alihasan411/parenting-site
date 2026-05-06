@@ -251,52 +251,56 @@ footer{
 
 <script>
 
-/* DARK MODE */
-function toggleDark(){
-  document.body.classList.toggle("dark");
-}
+// WAIT UNTIL PAGE LOAD
+document.addEventListener("DOMContentLoaded", function(){
 
-/* SCROLL */
-function scrollToTips(){
-  document.getElementById("tips").scrollIntoView({
-    behavior:"smooth"
-  });
-}
-
-/* MODAL DATA */
-function openModal(type){
-  const title = document.getElementById("modal-title");
-  const text = document.getElementById("modal-text");
-
-  if(type === "screen"){
-    title.innerText = "Control Screen Time";
-    text.innerText = "Limit screen to 1-2 hours. Encourage outdoor play and family time.";
+  /* DARK MODE */
+  window.toggleDark = function(){
+    document.body.classList.toggle("dark");
   }
 
-  if(type === "confidence"){
-    title.innerText = "Build Confidence";
-    text.innerText = "Give kids responsibilities and appreciate their efforts.";
+  /* SCROLL */
+  window.scrollToTips = function(){
+    document.getElementById("tips").scrollIntoView({
+      behavior:"smooth"
+    });
   }
 
-  document.getElementById("modal").style.display = "flex";
-}
+  /* MODAL */
+  window.openModal = function(type){
+    const title = document.getElementById("modal-title");
+    const text = document.getElementById("modal-text");
 
-function closeModal(){
-  document.getElementById("modal").style.display = "none";
-}
-
-/* ANIMATION */
-const cards = document.querySelectorAll(".card");
-
-window.addEventListener("scroll", () => {
-  cards.forEach(card => {
-    const top = card.getBoundingClientRect().top;
-    if(top < window.innerHeight - 50){
-      card.classList.add("show");
+    if(type === "screen"){
+      title.innerText = "Control Screen Time";
+      text.innerText = "Limit screen to 1-2 hours. Encourage outdoor play.";
     }
-  });
-});
 
+    if(type === "confidence"){
+      title.innerText = "Build Confidence";
+      text.innerText = "Give kids responsibilities and appreciate them.";
+    }
+
+    document.getElementById("modal").style.display = "flex";
+  }
+
+  window.closeModal = function(){
+    document.getElementById("modal").style.display = "none";
+  }
+
+  /* ANIMATION */
+  const cards = document.querySelectorAll(".card");
+
+  window.addEventListener("scroll", () => {
+    cards.forEach(card => {
+      const top = card.getBoundingClientRect().top;
+      if(top < window.innerHeight - 50){
+        card.classList.add("show");
+      }
+    });
+  });
+
+});
 </script>
 
 </body>
