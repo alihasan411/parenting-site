@@ -220,7 +220,7 @@ nav a{
 
 <!-- HERO -->
 <section class="hero">
-  <h1 id="heroText">Raise Strong Kids</h1>
+  <h1><span id="typing"></span><span class="cursor">|</span></h1>
   <p id="heroSub">in Digital World</p>
   <button onclick="scrollToProjects()">Explore</button>
 </section>
@@ -351,6 +351,17 @@ setInterval(()=>{
   document.getElementById("heroText").innerText = texts[i];
   document.getElementById("heroSub").innerText = subTexts[i];
 },2500);
+
+
+
+window.addEventListener("scroll", ()=>{
+  document.querySelectorAll(".reveal").forEach(el=>{
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 50){
+      el.classList.add("active");
+    }
+  });
+});
 
 </script>
 
