@@ -337,22 +337,17 @@ View
 
 <script>
 
+window.toggleMode = function(){
+  document.body.classList.toggle("light");
+}
 
+window.scrollToProjects = function(){
+  document.getElementById("projects").scrollIntoView({
+    behavior:"smooth"
+  });
+}
 
-  /* DARK MODE */
-  window.toggleMode = function(){
-    document.body.classList.toggle("light");
-  }
-
-  /* SCROLL */
-  window.scrollToProjects = function(){
-    document.getElementById("projects").scrollIntoView({
-      behavior:"smooth"
-    });
-  }
-
-  /* MODAL */
-  window.openModal = function(text){
+window.openModal = function(text){
   document.getElementById("modal").style.display = "flex";
   document.getElementById("modalText").innerHTML = text;
 }
@@ -361,49 +356,45 @@ window.closeModal = function(){
   document.getElementById("modal").style.display = "none";
 }
 
+/* HERO TYPING */
 
-  /* HERO TYPING */
-  const words = [
-    "Raise Strong Kids",
-    "Guide Kids Smartly",
-    "Build Strong Future"
-  ];
+const words = [
+  "Raise Strong Kids",
+  "Guide Kids Smartly",
+  "Build Strong Future"
+];
 
-  let wordIndex = 0;
-  let charIndex = 0;
-  let currentWord = "";
-  let isDeleting = false;
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
 
-  function typeEffect(){
+function typeEffect(){
 
-    currentWord = words[wordIndex];
+  let currentWord = words[wordIndex];
 
-    if(isDeleting){
-      document.getElementById("typing").textContent =
-      currentWord.substring(0, charIndex--);
-    }else{
-      document.getElementById("typing").textContent =
-      currentWord.substring(0, charIndex++);
-    }
-
-    if(!isDeleting && charIndex === currentWord.length){
-      isDeleting = true;
-      setTimeout(typeEffect,1000);
-      return;
-    }
-
-    if(isDeleting && charIndex === 0){
-      isDeleting = false;
-      wordIndex = (wordIndex + 1) % words.length;
-    }
-
-    setTimeout(typeEffect, isDeleting ? 50 : 100);
+  if(isDeleting){
+    document.getElementById("typing").textContent =
+    currentWord.substring(0,charIndex--);
+  }else{
+    document.getElementById("typing").textContent =
+    currentWord.substring(0,charIndex++);
   }
 
-  typeEffect();
+  if(!isDeleting && charIndex === currentWord.length){
+    isDeleting = true;
+    setTimeout(typeEffect,1000);
+    return;
+  }
 
+  if(isDeleting && charIndex === 0){
+    isDeleting = false;
+    wordIndex = (wordIndex + 1) % words.length;
+  }
 
+  setTimeout(typeEffect,isDeleting ? 50 : 100);
 }
+
+typeEffect();
 
 </script>
 
