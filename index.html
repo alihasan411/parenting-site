@@ -200,6 +200,15 @@ nav a{
 }
 
 
+.cursor{
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  0%,100%{opacity:1;}
+  50%{opacity:0;}
+}
+
 
 </style>
 </head>
@@ -301,14 +310,12 @@ View
 
 <script>
 
-/* RUN AFTER PAGE LOAD */
 window.onload = function(){
 
   /* DARK MODE */
-  function toggleMode(){
+  window.toggleMode = function(){
     document.body.classList.toggle("light");
   }
-  window.toggleMode = toggleMode;
 
   /* SCROLL */
   window.scrollToProjects = function(){
@@ -319,56 +326,64 @@ window.onload = function(){
 
   /* MODAL */
   function openModal(text){
-    document.getElementById("modal").style.display="flex";
-    document.getElementById("modalText").innerHTML=text;
+    document.getElementById("modal").style.display = "flex";
+    document.getElementById("modalText").innerHTML = text;
   }
 
   window.closeModal = function(){
-    document.getElementById("modal").style.display="none";
+    document.getElementById("modal").style.display = "none";
   }
 
-  /* BUTTON FIX (ONLY ONCE) */
-  setTimeout(()=>{
-  
-  /* HERO TEXT */
-  const texts = [
+  /* VIEW BUTTON */
+  document.querySelectorAll(".viewBtn").forEach(btn=>{
+    btn.addEventListener("click", function(){
+      openModal(this.getAttribute("data-text"));
+    });
+  });
+
+  /* HERO TYPING */
+  const words = [
     "Raise Strong Kids",
     "Guide Kids Smartly",
     "Build Strong Future"
   ];
 
-  const subTexts = [
-    "in Digital World",
-    "Modern Parenting Tips",
-    "Smart Parenting Guide"
-  ];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let currentWord = "";
+  let isDeleting = false;
 
-  let i = 0;
+  function typeEffect(){
 
-  setInterval(()=>{
-    i = (i+1)%texts.length;
+    currentWord = words[wordIndex];
 
-    const h = document.getElementById("heroText");
-    const p = document.getElementById("heroSub");
-
-    if(h && p){
-      h.innerText = texts[i];
-      p.innerText = subTexts[i];
+    if(isDeleting){
+      document.getElementById("typing").textContent =
+      currentWord.substring(0, charIndex--);
+    }else{
+      document.getElementById("typing").textContent =
+      currentWord.substring(0, charIndex++);
     }
 
-  },2500);
+    if(!isDeleting && charIndex === currentWord.length){
+      isDeleting = true;
+      setTimeout(typeEffect,1000);
+      return;
+    }
 
-  /* SCROLL ANIMATION */
-  window.addEventListener("scroll", ()=>{
-    document.querySelectorAll(".reveal").forEach(el=>{
-      const top = el.getBoundingClientRect().top;
-      if(top < window.innerHeight - 50){
-        el.classList.add("active");
-      }
-    });
-  });
+    if(isDeleting && charIndex === 0){
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+    }
+
+    setTimeout(typeEffect, isDeleting ? 50 : 100);
+  }
+
+  typeEffect();
 
 };
+
+</script>
 
 </script>
 
