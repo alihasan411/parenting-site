@@ -1363,6 +1363,39 @@ nav a:hover::after{
 
 
 
+/* CARD SHINE EFFECT */
+
+.card::before{
+
+  content:'';
+
+  position:absolute;
+
+  top:0;
+  left:-120%;
+
+  width:60%;
+  height:100%;
+
+  background:
+  linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.25),
+    transparent
+  );
+
+  transition:0.7s;
+
+}
+
+.card:hover::before{
+
+  left:130%;
+
+}
+
+
 
 </style>
 </head>
