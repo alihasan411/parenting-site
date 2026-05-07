@@ -1,4 +1,4 @@
-u<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -8,200 +8,117 @@ u<!DOCTYPE html>
 <style>
 
 /* RESET */
-*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+  scroll-behavior:smooth;
+}
 
 :root{
-  --bg:#0f172a;
-  --text:#fff;
-  --card:#1e293b;
+  --bg:#08111f;
+  --text:#ffffff;
+  --card:#162133;
   --primary:#22c55e;
-  --hero1:#14532d;
-  --hero2:#22c55e;
+  --hero1:#0b1220;
+  --hero2:#14532d;
 }
 
 /* LIGHT MODE */
 body.light{
-  --bg:#f5f7fa;
-  --text:#111;
-  --card:#fff;
+  --bg:#f4f7fb;
+  --text:#111827;
+  --card:#ffffff;
 }
 
 /* BODY */
 body{
   background:var(--bg);
   color:var(--text);
-  transition:0.3s;
+  transition:0.4s;
 }
 
 /* NAVBAR */
 header{
+  width:100%;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:15px 20px;
-  background:var(--card);
-  flex-wrap:wrap;
+  padding:18px 7%;
+  background:rgba(10,15,25,0.95);
+  position:sticky;
+  top:0;
+  z-index:999;
+  backdrop-filter:blur(10px);
+}
+
+.logo{
+  font-size:24px;
+  font-weight:700;
 }
 
 nav{
   display:flex;
-  gap:15px;
+  gap:30px;
 }
 
 nav a{
   text-decoration:none;
   color:var(--text);
-  font-weight:bold;
+  font-weight:600;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#4ade80;
 }
 
 .toggle{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:var(--card);
   cursor:pointer;
   font-size:18px;
 }
 
 /* HERO */
 .hero{
+  min-height:85vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
-  padding:80px 20px;
-  background:linear-gradient(135deg,var(--hero1),var(--hero2));
+  padding:40px 20px;
+  background:
+  linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+  linear-gradient(135deg,var(--hero1),var(--hero2));
 }
 
 .hero h1{
-  font-size:28px;
-  transition:0.5s;
+  font-size:65px;
+  line-height:1.2;
+  margin-bottom:20px;
+  animation:updown 3s ease-in-out infinite;
 }
 
 .hero p{
-  opacity:0.8;
-  margin-top:10px;
-  transition:0.5s;
+  font-size:20px;
+  opacity:0.9;
+  max-width:700px;
+  line-height:1.7;
 }
 
-.hero button{
-  margin-top:20px;
-  padding:12px 25px;
-  border:none;
-  border-radius:8px;
-  background:white;
-  color:#14532d;
-  cursor:pointer;
+@keyframes updown{
+  0%{transform:translateY(-10px);}
+  50%{transform:translateY(10px);}
+  100%{transform:translateY(-10px);}
 }
-
-/* CARDS */
-.section{padding:30px 20px;}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-.card{
-  background:var(--card);
-  border-radius:12px;
-  overflow:hidden;
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:translateY(-10px);
-}
-
-.card img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-}
-
-.card-content{padding:15px;}
-
-.card button{
-  margin-top:10px;
-  padding:8px 15px;
-  border:none;
-  background:var(--primary);
-  color:#fff;
-  border-radius:6px;
-  cursor:pointer;
-}
-
-/* CONTACT */
-.contact{
-  text-align:center;
-  padding:30px;
-}
-
-/* MODAL */
-.modal{
-  display:none;
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.7);
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
-
-.modal-content{
-  background:#fff;
-  color:#000;
-  padding:20px;
-  border-radius:10px;
-  width:90%;
-  max-width:300px;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-  nav{
-    width:100%;
-    justify-content:center;
-    margin-top:10px;
-  }
-}
-
-
-
-/* PREMIUM CARD EFFECT */
-.card{
-  position:relative;
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,0.1);
-}
-
-.card::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  border-radius:15px;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.2),transparent);
-  opacity:0;
-  transition:0.5s;
-}
-
-.card:hover::before{
-  opacity:1;
-}
-
-.card:hover{
-  transform:translateY(-12px) scale(1.02);
-}
-
-
-
-.card button{
-  background:linear-gradient(45deg,#22c55e,#4ade80);
-  transition:0.3s;
-}
-
-.card button:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 15px rgba(34,197,94,0.6);
-}
-
 
 .cursor{
   animation:blink 1s infinite;
@@ -212,105 +129,367 @@ nav a{
   50%{opacity:0;}
 }
 
+/* BUTTON */
+.hero button{
+  margin-top:30px;
+  padding:14px 32px;
+  border:none;
+  border-radius:50px;
+  background:linear-gradient(45deg,#22c55e,#4ade80);
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.hero button:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(34,197,94,0.4);
+}
+
+/* SECTION */
+.section{
+  padding:80px 7%;
+}
+
+.section h2{
+  text-align:center;
+  margin-bottom:50px;
+  font-size:40px;
+}
+
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:22px;
+  overflow:hidden;
+  transition:0.4s;
+  position:relative;
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.card:hover{
+  transform:translateY(-12px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.35);
+}
+
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  transition:0.4s;
+}
+
+.card:hover img{
+  transform:scale(1.08);
+}
+
+.card-content{
+  padding:22px;
+}
+
+.card-content h3{
+  margin-bottom:10px;
+  font-size:24px;
+}
+
+.card-content p{
+  opacity:0.8;
+  line-height:1.6;
+}
+
+.card-content button{
+  margin-top:18px;
+  padding:10px 24px;
+  border:none;
+  border-radius:50px;
+  background:linear-gradient(45deg,#22c55e,#4ade80);
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.card-content button:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px rgba(34,197,94,0.5);
+}
+
+/* CONTACT */
+.contact{
+  padding:80px 7%;
+  text-align:center;
+}
+
+.contact-box{
+  max-width:700px;
+  margin:auto;
+  background:var(--card);
+  padding:40px;
+  border-radius:25px;
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.contact h2{
+  margin-bottom:20px;
+  font-size:38px;
+}
+
+.contact p{
+  margin:12px 0;
+  font-size:18px;
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.75);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.modal-content{
+  background:white;
+  color:black;
+  width:90%;
+  max-width:380px;
+  padding:30px;
+  border-radius:20px;
+  animation:popup 0.3s ease;
+}
+
+@keyframes popup{
+  from{
+    transform:scale(0.7);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+.modal-content h3{
+  margin-bottom:15px;
+}
+
+.modal-content p{
+  line-height:2;
+}
+
+.modal-content button{
+  margin-top:20px;
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  background:#22c55e;
+  color:white;
+  cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  header{
+    padding:15px 20px;
+    flex-wrap:wrap;
+    gap:15px;
+  }
+
+  nav{
+    width:100%;
+    justify-content:center;
+    gap:18px;
+  }
+
+  .hero{
+    min-height:75vh;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .section h2{
+    font-size:30px;
+  }
+
+}
 
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+
 <header>
-  <h3>Smart Parenting</h3>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<div class="logo">
+Smart Parenting
+</div>
 
-  <div class="toggle" onclick="toggleMode()">🌙</div>
+<nav>
+<a href="#">Home</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="toggle" onclick="toggleMode()">
+🌙
+</div>
+
 </header>
 
 <!-- HERO -->
+
 <section class="hero">
-  <h1><span id="typing"></span><span class="cursor">|</span></h1>
-  <p id="heroSub">in Digital World</p>
-  <button onclick="scrollToProjects()">Explore</button>
+
+<h1>
+<span id="typing"></span>
+<span class="cursor">|</span>
+</h1>
+
+<p>
+Modern parenting tips to guide children in the digital world with confidence and smart habits.
+</p>
+
+<button onclick="scrollToProjects()">
+Explore Tips
+</button>
+
 </section>
 
 <!-- PROJECTS -->
+
 <section id="projects" class="section">
-<h2 style="text-align:center;margin-bottom:20px;">Parenting Tips</h2>
+
+<h2>Parenting Tips</h2>
 
 <div class="cards">
 
+<!-- CARD 1 -->
+
 <div class="card">
+
 <img src="https://images.unsplash.com/photo-1588072432836-e10032774350">
+
 <div class="card-content">
+
 <h3>Screen Time</h3>
 
-<button class="viewBtn"
-onclick="openModal(this.getAttribute('data-text'))"
-data-text="• Limit screen time<br>• No mobile at night<br>• Encourage outdoor play<br>• Be a role model">
+<p>
+Manage healthy screen usage for children.
+</p>
+
+<button
+onclick="openModal('• Limit screen time<br>• No mobile at night<br>• Encourage outdoor play<br>• Be a role model')">
 View
 </button>
 
 </div>
 </div>
 
+<!-- CARD 2 -->
 
 <div class="card">
+
 <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b">
+
 <div class="card-content">
+
 <h3>Confidence</h3>
 
-<button class="viewBtn"
-onclick="openModal(this.getAttribute('data-text'))"
-data-text="• Encourage kids to speak<br>• Appreciate small efforts<br>• Avoid over scolding<br>• Build confidence daily">
+<p>
+Build self-confidence in kids daily.
+</p>
+
+<button
+onclick="openModal('• Encourage kids to speak<br>• Appreciate small efforts<br>• Avoid over scolding<br>• Build confidence daily')">
 View
 </button>
 
 </div>
 </div>
 
+<!-- CARD 3 -->
 
 <div class="card">
+
 <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7">
+
 <div class="card-content">
+
 <h3>Healthy Life</h3>
 
-<button class="viewBtn"
-onclick="openModal(this.getAttribute('data-text'))"
-data-text="• Daily outdoor activities<br>• Healthy eating habits<br>• Reduce junk food<br>• Stay physically active">
+<p>
+Create healthy routines and activities.
+</p>
+
+<button
+onclick="openModal('• Daily outdoor activities<br>• Healthy eating habits<br>• Reduce junk food<br>• Stay physically active')">
 View
 </button>
 
 </div>
 </div>
 
+<!-- CARD 4 -->
 
 <div class="card">
+
 <img src="https://images.unsplash.com/photo-1584697964358-3e14ca57658b">
+
 <div class="card-content">
+
 <h3>Learning</h3>
 
-<button class="viewBtn"
-onclick="openModal(this.getAttribute('data-text'))"
-data-text="• Use educational apps<br>• Monitor screen content<br>• Study routine<br>• Practical learning">
+<p>
+Smart learning methods for children.
+</p>
+
+<button
+onclick="openModal('• Use educational apps<br>• Monitor screen content<br>• Study routine<br>• Practical learning')">
 View
 </button>
 
 </div>
 </div>
 
+<!-- CARD 5 -->
 
 <div class="card">
+
 <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0">
+
 <div class="card-content">
+
 <h3>Discipline</h3>
 
-<button class="viewBtn"
-onclick="openModal(this.getAttribute('data-text'))"
-data-text="• Set daily routine<br>• Teach respect<br>• Follow rules<br>• Consistency is key">
+<p>
+Teach respect and build consistency.
+</p>
+
+<button
+onclick="openModal('• Set daily routine<br>• Teach respect<br>• Follow rules<br>• Consistency is key')">
 View
 </button>
 
@@ -318,29 +497,44 @@ View
 </div>
 
 </div>
+
 </section>
 
 <!-- CONTACT -->
+
 <section id="contact" class="contact">
-<h2>Contact</h2>
+
+<div class="contact-box">
+
+<h2>Contact Me</h2>
+
 <p>📞 0300-1234567</p>
+
 <p>📧 alihassanayesha752@gmail.com</p>
+
+</div>
+
 </section>
 
 <!-- MODAL -->
+
 <div class="modal" id="modal">
 
-  <div class="modal-content">
+<div class="modal-content">
 
-    <p id="modalText"></p>
+<h3>Parenting Tips</h3>
 
-    <button onclick="closeModal()">
-      Close
-    </button>
+<p id="modalText"></p>
 
-  </div>
+<button onclick="closeModal()">
+Close
+</button>
 
 </div>
+
+</div>
+
+<!-- SCRIPT -->
 
 <script>
 
@@ -355,15 +549,15 @@ function scrollToProjects(){
 }
 
 function openModal(text){
-  document.getElementById("modal").style.display = "flex";
-  document.getElementById("modalText").innerHTML = text;
+  document.getElementById("modal").style.display="flex";
+  document.getElementById("modalText").innerHTML=text;
 }
 
 function closeModal(){
-  document.getElementById("modal").style.display = "none";
+  document.getElementById("modal").style.display="none";
 }
 
-/* HERO TEXT */
+/* HERO TYPING */
 
 const words = [
   "Raise Strong Kids",
@@ -389,6 +583,7 @@ function typeEffect(){
 
   if(!isDeleting && charIndex === currentWord.length){
     isDeleting = true;
+
     setTimeout(typeEffect,1000);
     return;
   }
@@ -398,11 +593,12 @@ function typeEffect(){
     wordIndex = (wordIndex + 1) % words.length;
   }
 
-  setTimeout(typeEffect,isDeleting ? 50 : 100);
+  setTimeout(typeEffect,isDeleting ? 60 : 120);
 }
 
 typeEffect();
 
 </script>
+
 </body>
 </html>
