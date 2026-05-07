@@ -971,17 +971,21 @@ A daily routine improves discipline, focus, and healthy habits.
 <p>📞 0300-1234567</p>
 <p>📧 alihassanayesha752@gmail.com</p>
 
-<form class="contact-form">
+<form class="contact-form" onsubmit="sendMessage(event)">
 
-<input type="text" placeholder="Your Name">
+<input type="text" placeholder="Your Name" required>
 
-<input type="email" placeholder="Your Email">
+<input type="email" placeholder="Your Email" required>
 
-<textarea placeholder="Your Message"></textarea>
+<textarea placeholder="Write Message" required></textarea>
 
 <button type="submit">
 Send Message
 </button>
+
+<p class="success-msg" id="successMsg">
+Message Sent Successfully ✅
+</p>
 
 </form>
 
