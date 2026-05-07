@@ -1397,6 +1397,34 @@ nav a:hover::after{
 
 
 
+/* SMOOTH FADE EFFECT */
+
+.section,
+.faq,
+.testimonials,
+.contact{
+
+  opacity:0;
+
+  transform:translateY(60px);
+
+  transition:1s ease;
+
+}
+
+.section.show,
+.faq.show,
+.testimonials.show,
+.contact.show{
+
+  opacity:1;
+
+  transform:translateY(0);
+
+}
+
+
+
 </style>
 </head>
 
