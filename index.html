@@ -1095,8 +1095,17 @@ View
 Smart learning methods for children.
 </p>
 
-<button
-onclick="openModal('• Use educational apps<br>• Monitor screen content<br>• Study routine<br>• Practical learning')">
+<button class="viewBtn"
+onclick="openModal(this.getAttribute('data-text'))"
+data-text="
+• Create a calm and focused study routine.<br><br>
+
+• Use educational apps wisely.<br><br>
+
+• Encourage practical and creative learning.<br><br>
+
+• Support curiosity and problem solving.
+">
 View
 </button>
 
