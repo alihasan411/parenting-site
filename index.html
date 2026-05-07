@@ -1187,6 +1187,42 @@ document.querySelectorAll(".faq-question")
 
 });
 
+
+
+
+/* CONTACT FORM */
+
+function sendMessage(e){
+
+  e.preventDefault();
+
+  document.getElementById("successMsg")
+  .style.display = "block";
+
+}
+
+/* AI BUTTON */
+
+function toggleAI(){
+
+  const aiBox =
+  document.getElementById("aiBox");
+
+  if(aiBox.style.display === "block"){
+
+    aiBox.style.display = "none";
+
+  }else{
+
+    aiBox.style.display = "block";
+
+  }
+
+}
+
+
+
+
 </script>
 
 
