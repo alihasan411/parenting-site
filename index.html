@@ -1720,6 +1720,38 @@ navLinks.forEach(link=>{
 
 
 
+
+/* STATS COUNTER */
+
+function counter(id,start,end,speed){
+
+  let obj = document.getElementById(id);
+
+  let current = start;
+
+  let timer = setInterval(()=>{
+
+    current++;
+
+    obj.textContent = current + "+";
+
+    if(current >= end){
+
+      clearInterval(timer);
+
+    }
+
+  },speed);
+
+}
+
+counter("stat1",0,500,5);
+counter("stat2",0,1200,2);
+counter("stat3",0,98,20);
+
+
+
+
 </script>
 
 
