@@ -1065,11 +1065,19 @@ View
 Create healthy routines and activities.
 </p>
 
-<button
-onclick="openModal('• Daily outdoor activities<br>• Healthy eating habits<br>• Reduce junk food<br>• Stay physically active')">
+<button class="viewBtn"
+onclick="openModal(this.getAttribute('data-text'))"
+data-text="
+• Build daily exercise and activity habits.<br><br>
+
+• Encourage healthy homemade meals.<br><br>
+
+• Maintain proper sleep routines.<br><br>
+
+• Reduce sugary snacks and drinks.
+">
 View
 </button>
-
 </div>
 </div>
 
