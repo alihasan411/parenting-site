@@ -1009,23 +1009,48 @@ Close
 
 <script>
 
-function toggleMode(){
-  document.body.classList.toggle("light");
+/* DARK MODE SAVE */
+
+if(localStorage.getItem("mode") === "light"){
+  document.body.classList.add("light");
 }
 
+function toggleMode(){
+
+  document.body.classList.toggle("light");
+
+  if(document.body.classList.contains("light")){
+    localStorage.setItem("mode","light");
+  }else{
+    localStorage.setItem("mode","dark");
+  }
+
+}
+
+/* SCROLL */
+
 function scrollToProjects(){
+
   document.getElementById("projects").scrollIntoView({
     behavior:"smooth"
   });
+
 }
 
+/* MODAL */
+
 function openModal(text){
-  document.getElementById("modal").style.display="flex";
-  document.getElementById("modalText").innerHTML=text;
+
+  document.getElementById("modal").style.display = "flex";
+
+  document.getElementById("modalText").innerHTML = text;
+
 }
 
 function closeModal(){
-  document.getElementById("modal").style.display="none";
+
+  document.getElementById("modal").style.display = "none";
+
 }
 
 /* HERO TYPING */
@@ -1045,30 +1070,40 @@ function typeEffect(){
   let currentWord = words[wordIndex];
 
   if(isDeleting){
+
     document.getElementById("typing").textContent =
     currentWord.substring(0,charIndex--);
+
   }else{
+
     document.getElementById("typing").textContent =
     currentWord.substring(0,charIndex++);
+
   }
 
   if(!isDeleting && charIndex === currentWord.length){
+
     isDeleting = true;
 
     setTimeout(typeEffect,1000);
+
     return;
+
   }
 
   if(isDeleting && charIndex === 0){
+
     isDeleting = false;
+
     wordIndex = (wordIndex + 1) % words.length;
+
   }
 
   setTimeout(typeEffect,isDeleting ? 60 : 120);
+
 }
 
 typeEffect();
-
 
 /* SCROLL REVEAL */
 
@@ -1081,17 +1116,78 @@ window.addEventListener('scroll',()=>{
     const top = card.getBoundingClientRect().top;
 
     if(top < window.innerHeight - 100){
+
       card.classList.add('show');
+
     }
 
   });
 
 });
 
+/* STATS COUNTER */
 
+function counter(id,start,end,speed){
+
+  let obj = document.getElementById(id);
+
+  let current = start;
+
+  let timer = setInterval(()=>{
+
+    current++;
+
+    obj.textContent = current + "+";
+
+    if(current >= end){
+
+      clearInterval(timer);
+
+    }
+
+  },speed);
+
+}
+
+counter("stat1",0,500,5);
+counter("stat2",0,1200,2);
+counter("stat3",0,98,20);
+
+/* TESTIMONIAL SLIDER */
+
+const testimonials =
+document.querySelectorAll(".testimonial");
+
+let testiIndex = 0;
+
+setInterval(()=>{
+
+  testimonials[testiIndex]
+  .classList.remove("active");
+
+  testiIndex =
+  (testiIndex + 1) % testimonials.length;
+
+  testimonials[testiIndex]
+  .classList.add("active");
+
+},3000);
+
+/* FAQ */
+
+document.querySelectorAll(".faq-question")
+.forEach(question=>{
+
+  question.addEventListener("click",()=>{
+
+    question.parentElement
+    .classList.toggle("active");
+
+  });
+
+});
 
 </script>
-
 
 
 
