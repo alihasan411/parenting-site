@@ -326,14 +326,14 @@ window.onload = function(){
   }
 
   /* MODAL */
-  function openModal(text){
-    document.getElementById("modal").style.display = "flex";
-    document.getElementById("modalText").innerHTML = text;
-  }
+  window.openModal = function(text){
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("modalText").innerHTML = text;
+}
 
-  window.closeModal = function(){
-    document.getElementById("modal").style.display = "none";
-  }
+window.closeModal = function(){
+  document.getElementById("modal").style.display = "none";
+}
 
 
   /* HERO TYPING */
