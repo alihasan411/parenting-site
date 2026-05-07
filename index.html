@@ -1754,6 +1754,8 @@ function counter(id,start,end,speed){
 
   let obj = document.getElementById(id);
 
+  if(!obj) return;
+
   let current = start;
 
   let timer = setInterval(()=>{
@@ -1772,9 +1774,17 @@ function counter(id,start,end,speed){
 
 }
 
+/* HERO COUNTERS */
+
 counter("stat1",0,500,5);
 counter("stat2",0,1200,2);
 counter("stat3",0,98,20);
+
+/* FOOTER COUNTERS */
+
+counter("count4",0,500,5);
+counter("count5",0,120,20);
+counter("count6",0,300,10);
 
 /* TESTIMONIAL SLIDER */
 
@@ -1783,35 +1793,40 @@ document.querySelectorAll(".testimonial");
 
 let testiIndex = 0;
 
-setInterval(()=>{
+if(testimonials.length > 0){
 
-  testimonials[testiIndex]
-  .classList.remove("active");
+  testimonials[0].classList.add("active");
 
-  testiIndex =
-  (testiIndex + 1) % testimonials.length;
+  setInterval(()=>{
 
-  testimonials[testiIndex]
-  .classList.add("active");
+    testimonials[testiIndex]
+    .classList.remove("active");
 
-},3000);
+    testiIndex =
+    (testiIndex + 1) % testimonials.length;
+
+    testimonials[testiIndex]
+    .classList.add("active");
+
+  },3000);
+
+}
 
 /* FAQ */
 
-document.querySelectorAll(".faq-question")
-.forEach(question=>{
+const faqItems = document.querySelectorAll(".faq-item");
+
+faqItems.forEach(item=>{
+
+  const question = item.querySelector(".faq-question");
 
   question.addEventListener("click",()=>{
 
-    question.parentElement
-    .classList.toggle("active");
+    item.classList.toggle("active");
 
   });
 
 });
-
-
-
 
 /* CONTACT FORM */
 
@@ -1843,20 +1858,20 @@ function toggleAI(){
 
 }
 
-
-
-
-
 /* BACK TO TOP */
 
 const topBtn = document.getElementById("topBtn");
 
 window.addEventListener("scroll",()=>{
 
-  if(window.scrollY > 300){
-    topBtn.style.display = "block";
-  }else{
-    topBtn.style.display = "none";
+  if(topBtn){
+
+    if(window.scrollY > 300){
+      topBtn.style.display = "block";
+    }else{
+      topBtn.style.display = "none";
+    }
+
   }
 
 });
@@ -1890,79 +1905,24 @@ navLinks.forEach(link=>{
 
 });
 
-
-
-
-/* STATS COUNTER */
-
-function counter(id,start,end,speed){
-
-  let obj = document.getElementById(id);
-
-  let current = start;
-
-  let timer = setInterval(()=>{
-
-    current++;
-
-    obj.textContent = current + "+";
-
-    if(current >= end){
-
-      clearInterval(timer);
-
-    }
-
-  },speed);
-
-}
-
-counter("stat1",0,500,5);
-counter("stat2",0,1200,2);
-counter("stat3",0,98,20);
-
-
-
-
-
-
-/* FAQ */
-
-const faqItems = document.querySelectorAll(".faq-item");
-
-faqItems.forEach(item=>{
-
-  const question = item.querySelector(".faq-question");
-
-  question.addEventListener("click",()=>{
-
-    item.classList.toggle("active");
-
-  });
-
-});
-
-
-
-
-
 /* LOADER */
 
 window.addEventListener("load",()=>{
 
   setTimeout(()=>{
 
-    document.getElementById("loader")
-    .style.display = "none";
+    const loader =
+    document.getElementById("loader");
+
+    if(loader){
+      loader.style.display = "none";
+    }
 
   },1500);
 
 });
 
-
-
 </script>
-
 
 
 <footer class="footer">
