@@ -1003,8 +1003,17 @@ Explore Tips
 Manage healthy screen usage for children.
 </p>
 
-<button
-onclick="openModal('• Limit screen time<br>• No mobile at night<br>• Encourage outdoor play<br>• Be a role model')">
+<button class="viewBtn"
+onclick="openModal(this.getAttribute('data-text'))"
+data-text="
+• Balance learning and entertainment screen usage.<br><br>
+
+• Avoid phones during meals and bedtime.<br><br>
+
+• Encourage reading and outdoor activities.<br><br>
+
+• Parents should model healthy digital habits.
+">
 View
 </button>
 
